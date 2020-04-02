@@ -27,6 +27,6 @@ func main() {
 	p := parser.NewCPP14Parser(stream)
 	p.AddErrorListener(antlr.NewDiagnosticErrorListener(true))
 	p.BuildParseTrees = true
-	tree := p.Typespecifierseq()
+	tree := p.Translationunit()
 	antlr.ParseTreeWalkerDefault.Walk(NewTreeShapeListener(), tree)
 }
