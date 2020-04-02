@@ -25,7 +25,7 @@ using namespace antlr4;
 
 int main(int argc, const char * argv[]) {
 
-  ANTLRInputStream input("🍴 = 🍐 + \"😎\";(((x * π))) * µ + ∰; a + (x * (y ? 0 : 1) + z);");
+  ANTLRFileStream input(argv[1]);
   TLexer lexer(&input);
   CommonTokenStream tokens(&lexer);
 
