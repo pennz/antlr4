@@ -8,15 +8,15 @@ import (
 	"github.com/antlr/antlr4/runtime/Go/antlr"
 )
 
-type TreeShapeListener struct {
+type treeShapeListener struct {
 	*parser.BaseCPP14Listener
 }
 
-func NewTreeShapeListener() *TreeShapeListener {
-	return new(TreeShapeListener)
+func newTreeShapeListener() *treeShapeListener {
+	return new(treeShapeListener)
 }
 
-func (this *TreeShapeListener) EnterEveryRule(ctx antlr.ParserRuleContext) {
+func (l *treeShapeListener) EnterEveryRule(ctx antlr.ParserRuleContext) {
 	fmt.Println(ctx.GetText())
 }
 
@@ -28,5 +28,5 @@ func main() {
 	p.AddErrorListener(antlr.NewDiagnosticErrorListener(true))
 	p.BuildParseTrees = true
 	tree := p.Translationunit()
-	antlr.ParseTreeWalkerDefault.Walk(NewTreeShapeListener(), tree)
+	antlr.ParseTreeWalkerDefault.Walk(newTreeShapeListener(), tree)
 }
